@@ -1,0 +1,97 @@
+
+        :root { 
+            --dark: #111; 
+            --red: #e03131; 
+            --gray: #f4f4f4; 
+        }
+
+        .shipping-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            font-family: sans-serif;
+            color: var(--dark);
+        }
+
+        .shipping-card {
+            border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 30px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .shipping-header {
+            border-left: 4px solid var(--red);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .rates-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .rates-table thead tr {
+            background: var(--dark);
+            color: white;
+        }
+
+        .rates-table th {
+            padding: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        /* Rounded corners for the table header */
+        .rates-table th:first-child { border-top-left-radius: 10px; }
+        .rates-table th:last-child { border-top-right-radius: 10px; }
+
+        .rates-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rates-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight-red {
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        .shipping-note {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--gray);
+            border-radius: 10px;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .btn-track {
+            display: inline-block;
+            background: var(--dark);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-track:hover {
+            background: var(--red);
+        }
