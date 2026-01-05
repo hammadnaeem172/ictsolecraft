@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoleCraft | Premium Footwear</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <nav>
+        <div style="font-size: 20px; font-weight: 900; letter-spacing: 1px;">SOLECRAFT</div>
+        <div class="nav-links">
+            <span onclick="render('All')">All</span>
+            <span onclick="render('Men')">Men</span>
+            <span onclick="render('Women')">Women</span>
+        </div>
+        <div style="cursor:pointer; font-size: 20px;">🛒</div>
+    </nav>
+
+    <header>
+        <h1>Move with Purpose</h1>
+        <p>Premium footwear designed for the modern journey.</p>
+    </header>
+
+    <div class="container">
+        <h2 id="title" style="text-align: center; margin-bottom: 40px;">Featured Collection</h2>
+        <div class="grid" id="product-grid"></div>
+    </div>
+
+    <div id="detail-overlay">
+        <div class="detail-box">
+            <span class="close-btn" onclick="closeDetails()">&times;</span>
+            <img id="det-img" src="" style="width:100%; height:250px; object-fit:cover; border-radius:10px;">
+            <h2 id="det-name" style="margin:15px 0 5px;"></h2>
+            <p id="det-desc" style="font-size:14px; margin-bottom:10px;"></p>
+            <h3 id="det-price" style="color:var(--red);"></h3>
+            <button class="btn" onclick="alert('Item added to cart!')">Add to Cart</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>SOLECRAFT</h3>
+                <p>Crafting high-quality shoes that combine athletic performance with everyday style.</p>
+            </div>
+            <div>
+                <h3>Support</h3>
+                <a href="Shipping Policy.html">Shipping Policy</a>
+                <a href="Returns & Exchanges.html">Returns & Exchanges</a>
+
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div>
+                <h3>Newsletter</h3>
+                <p>Join for 10% off your first order.</p>
+                <input type="email" placeholder="Your email" style="padding: 8px; border-radius: 4px; border: none; width: 70%;">
+                <button style="padding: 8px; border-radius: 4px; border: none; cursor: pointer;">Go</button>
+            </div>
+        </div>
+        <div class="copy">&copy; 2026 SoleCraft Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        const products = [
+            { id: 1, name: "Velocity Pro", cat: "Men", price: 120, desc: "A breathable, lightweight runner designed for speed and daily training.", img: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa" },
+            { id: 2, name: "Cloud Walker", cat: "Women", price: 110, desc: "Soft foam cushioning that feels like walking on air. Perfect for all-day wear.", img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2" },
+            { id: 3, name: "Urban Stealth", cat: "Men", price: 130, desc: "Minimalist aesthetic with high-durability materials for city life.", img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77" },
+            { id: 4, name: "Rose Runner", cat: "Women", price: 95, desc: "Sleek silhouette in a vibrant finish, engineered for comfort and stability.", img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a" }
+        ];
+
+        function render(filter) {
+            document.getElementById('title').innerText = filter + " Collection";
+            const container = document.getElementById('product-grid');
+            const items = filter === 'All' ? products : products.filter(p => p.cat === filter);
+            
+            container.innerHTML = items.map(p => `
+                <div class="card" onclick="openDetails(${p.id})">
+                    <img src="${p.img}">
+                    <h3>${p.name}</h3>
+                    <p class="price">$${p.price}</p>
+                </div>
+            `).join('');
+        }
+
+        function openDetails(id) {
+            const p = products.find(item => item.id === id);
+            document.getElementById('det-img').src = p.img;
+            document.getElementById('det-name').innerText = p.name;
+            document.getElementById('det-desc').innerText = p.desc;
+            document.getElementById('det-price').innerText = "$" + p.price;
+            document.getElementById('detail-overlay').style.display = "flex";
+        }
+
+        function closeDetails() {
+            document.getElementById('detail-overlay').style.display = "none";
+        }
+
+        // Close details if user clicks the dark background
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('detail-overlay')) closeDetails();
+        }
+
+        render('All');
+    </script>
+</body>
+</html>
